@@ -1,0 +1,65 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define x 30
+
+int Test()
+{
+int num = 0;
+int answer = 0;
+int result = 0;
+int a = 0;
+int n = 0;
+char op = 0;
+
+int count = x;
+while ( count-- )
+{
+a = rand() % 10;
+n = rand() % 10;
+op = rand() % 4;
+
+switch ( op )
+{
+case 0:
+op = '+';
+answer = a+n;
+break;
+case 1:
+op = '-';
+answer = a-n;
+break;
+case 2:
+op = '*';
+answer = a*n;
+break;
+case 3:
+n++;
+op = '/';
+answer = a/n;
+break;
+default:
+break;
+}
+
+printf("\n题目:");
+printf("%d%c%d=?\n", a, op, n);
+printf("输入答案:");
+scanf("%d", &result);
+
+if ( answer == result )
+num++;
+}
+
+return num;
+}
+
+int main()
+{
+srand( time(NULL) );
+
+printf("开始答题:\n");
+printf("你一共答对le%d道题目。\n", Test());
+return 0;
+}
